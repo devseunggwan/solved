@@ -1,0 +1,1 @@
+print(min([int(input()) for itr in range(3)]) + min([int(input()) for itr in range(2)]) - 50)
