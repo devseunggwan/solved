@@ -1,0 +1,1 @@
+print(sum((sorted([int(input()) for i in range(4)])[1:])) + sorted([int(input()) for i in range(2)])[1])
