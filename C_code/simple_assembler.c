@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #define false 0
 #define true 1
-#define PERCENT "%"
-#define DOLLOR "$"
 
 void MOV();
 void ADD();
@@ -13,12 +12,18 @@ void PRT();
 int regIndex(char *S);
 void addRegTuple(char *reg, int value);
 
+/**
+ * 레지스터 값을 저장할 수 있는 구조체 선언
+*/
 static struct
 {
     char strVal[21];
     int intVal;
 } regTuple[15];
 
+/**
+ * 레지스터 값 추가 및 변경
+*/
 static int regNum = 0;
 void addRegTuple(char *reg, int value)
 {
@@ -26,12 +31,16 @@ void addRegTuple(char *reg, int value)
     regTuple[regNum++].intVal = value;
 }
 
+/**
+ * 메모리 값을 저장하는 배열 선언 및 초기화
+*/
 int memory[100] = {
     0,
 };
 
 void main()
 {
+    // regisiter init
     addRegTuple("%rax", 0);
     addRegTuple("%rbx", 0);
     addRegTuple("%rcx", 0);
@@ -48,79 +57,241 @@ void main()
     addRegTuple("%r14", 0);
     addRegTuple("%r15", 0);
 
+
+    // input
     while (true)
     {
         char func[10];
         scanf("%s", func);
         fgetc(stdin);
 
+        // 첫번째 파라미터 함수에 따라서 나눈 분기점
         if (!strcmp(func, "MOV"))
         {
             MOV();
-            fgetc(stdin);
         }
 
         else if (!strcmp(func, "ADD"))
         {
             ADD();
-            fgetc(stdin);
         }
 
         else if (!strcmp(func, "PRT"))
         {
             PRT();
-            fgetc(stdin);
         }
 
         else
         {
-            printf("I don't check function");
+            printf("I don't check function\n");
         }
     }
 }
 
+// src(arg1)의 데이터를 dst(arg2)로 이동
 void MOV()
 {
-    char *arg1 = malloc(sizeof(char));
-    char *arg2 = malloc(sizeof(char));
+    printf("Function: MOV\n");
+    char arg1[20], arg2[20];
     int num = 0;
-    int reg1Index = 0;
 
     scanf("%s %s", arg1, arg2);
 
-    if ((arg1[0] == DOLLOR))
-    {
-        num = atoi(&arg1[1]);
+    // 첫번째 파라미터가 상수일 경우
+    if (!strncmp(arg1, "$", 1))
+    {   
+        printf("First Parameter(Const): %s\n", arg1);
+
+        // 두 번째 파라미터가 레지스터일 경우(상수, 레지스터) O
+        if(!strncmp(arg2, "%", 1)) {
+            printf("Second Parameter(Register): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx = regIndex(arg2);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                regTuple[regIdx].intVal = atoi(&arg1[1]);
+                printf("Moved: %s -> %d\n", arg2, regTuple[regIdx].intVal);
+            }
+        }
+
+        // 두 번째 파라미터가 메모리일 경우)(상수, 메모리)
+        else {
+            printf("Second Parameter(Memory): %s\n", arg2);
+
+            int memIdx = memIndex(arg2);
+            memory[memIdx] = atoi(&arg1[1]);
+        }
     }
-    else if ((arg1[0] == PERCENT))
+
+    // 첫번째 파라미터가 레지스터일 경우
+    else if (!strncmp(arg1, "%", 1))
     {
-        reg1Index = regIndex(arg1);
-        printf("%d", reg1Index);
+        printf("First Parameter(Register): %s\n", arg1);
+
+        // 두 번째 파라미터가 레지스터일 경우(레지스터, 레지스터) O
+        if(!strncmp(arg2, "%", 1)) {
+            printf("Second Parameter(Register): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx1 = regIndex(arg1);
+            int regIdx2 = regIndex(arg2);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx1 == -1 || regIdx2 == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                regTuple[regIdx2].intVal = regTuple[regIdx1].intVal;
+                printf("Moved: %s -> %s\n", arg2, arg1);
+            }
+
+        }
+
+        // 두 번째 파라미터가 메모리일 경우(레지스터, 메모리)
+        else {
+            printf("Second Parameter(Memory): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx = regIndex(arg1);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                int memIdx = memIndex(arg2);
+                memory[memIdx] = regTuple[regIdx].intVal;
+                printf("Moved: %s -> %s\n", arg2, arg1);
+            }
+        }
+
     }
 }
 
+// 
 void ADD()
 {
-    char arg1[20], arg2[20];
+    printf("Select: ADD\n");
+
+ char arg1[20], arg2[20];
+    int num = 0;
+
     scanf("%s %s", arg1, arg2);
+
+    // 첫번째 파라미터가 상수일 경우
+    if (!strncmp(arg1, "$", 1))
+    {   
+        printf("First Parameter(Const): %s\n", arg1);
+
+        // 두 번째 파라미터가 레지스터일 경우(상수, 레지스터) O
+        if(!strncmp(arg2, "%", 1)) {
+            printf("Second Parameter(Register): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx = regIndex(arg2);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                regTuple[regIdx].intVal = regTuple[regIdx].intVal + atoi(&arg1[1]);
+                printf("Moved: %s -> %d\n", arg2, regTuple[regIdx].intVal);
+            }
+        }
+
+        // 두 번째 파라미터가 메모리일 경우)(상수, 메모리)
+        else {
+            printf("Second Parameter(Memory): %s\n", arg2);
+
+            int memIdx = memIndex(arg2);
+            memory[memIdx] = memory[memIdx] + atoi(&arg1[1]);
+        }
+    }
+
+    // 첫번째 파라미터가 레지스터일 경우
+    else if (!strncmp(arg1, "%", 1))
+    {
+        printf("First Parameter(Register): %s\n", arg1);
+
+        // 두 번째 파라미터가 레지스터일 경우(레지스터, 레지스터) O
+        if(!strncmp(arg2, "%", 1)) {
+            printf("Second Parameter(Register): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx1 = regIndex(arg1);
+            int regIdx2 = regIndex(arg2);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx1 == -1 || regIdx2 == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                regTuple[regIdx2].intVal = regTuple[regIdx2].intVal + regTuple[regIdx1].intVal;
+                printf("Moved: %s -> %s\n", arg2, arg1);
+            }
+
+        }
+
+        // 두 번째 파라미터가 메모리일 경우(레지스터, 메모리)
+        else {
+            printf("Second Parameter(Memory): %s\n", arg2);
+
+            // 레지스터 찾기
+            int regIdx = regIndex(arg1);
+        
+            // 레지스터를 찾지 못한 경우
+            if(regIdx == -1){
+                printf("Error: Please Check the Register Name\n");
+            }
+
+            // 레지스터를 찾은 경우
+            else {
+                int memIdx = memIndex(arg2);
+                memory[memIdx] = memory[memIdx] + regTuple[regIdx].intVal;
+                printf("Moved: %s -> %s\n", arg2, arg1);
+            }
+        }
+
+    }
 }
 
-void PRT()
-{
-    char arg1[20];
-    scanf("%s", arg1);
-
-    printf("%s\n", arg1);
-}
-
+/**
+ * 해당 레지스터(위치)를 찾아주는 함수
+*/
 int regIndex(char *S)
 {
     int argLoc = 0;
     for (int i = 0; i < 15; i++)
     {
-        if (regTuple[i].strVal == S)
+        if (!strcmp(regTuple[i].strVal, S))
         {
             return i;
         }
     }
+    return -1;
+}
+
+int memIndex(char *S){
+    char Imm[10] = ""; 
+    char V[10] = "";
+
+    // sscanf(S, "%[^(]*[^,]*[^,]%[^)]", Imm, V);
+    // printf("%s\n%s\n", Imm, V);
+    // return 0;
 }
