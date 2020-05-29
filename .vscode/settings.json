@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "/usr/local/var/pyenv/shims/python3"
+    "python.pythonPath": "/usr/local/opt/python@3.8/bin/python3",
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pycodestyleEnabled": true
 }
