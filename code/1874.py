@@ -1,15 +1,13 @@
 import sys
+from collections import deque
 
 N = int(sys.stdin.readline())
-M = [int(sys.stdin.readline()) in range(N)]
-V = [False] * N
-
-val = 0
-
-for i in M:
-    if(val < i):
-        for i in range(i-val):
-            print("+")
-        val = i
-    else:
+M = deque([int(sys.stdin.readline()) in range(N)])
+L = 1
+while M:
+    if(M[0] - L == 0):
+        pass
+    elif(M[0] - L > 0):
+        pass
+    elif(M[0] - L < 0):
         pass
