@@ -11,6 +11,4 @@ for q in range(N):
 print(dp)
 
 for T in range(int(input())):
-    i, j, x, y = map(int, input().strip().split())
-
-    print(sum())
+    i, j, x, y = map(int, input().strip().split())    
