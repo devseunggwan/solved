@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/mac/.pyenv/versions/anaconda3-5.3.1/bin/python",
+    "python.pythonPath": "C:\\Users\\TIM\\anaconda3\\python.exe",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": false,
