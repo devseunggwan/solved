@@ -1,0 +1,25 @@
+24
+int& a*[]&, b, c*;
+Double[][] Array[];
+int a;
+int& a;
+int[] aba;
+int* abacaba;
+int abacabadabacaba*;
+int abacabadabacabaeabacabadabacaba*;
+int abacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacaba[];
+int&*& a&, b&*, c*&&;
+int a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, aa, ab, ac, ad, ae, af, ag, ah, ai;
+int[][][] a[], b[][], c[][][];
+int a[][]&*&*, b, c[]**[][]***&*&*, d[]&&[][];
+dsafsd adsf[]&[]**&, dsaf&&&****, dsfa**&[]&&, rfsdgf**&&[]*, dasfs;
+a b&[][]&[][]&[]*&***&[]&&[][][]&&*[], c[][]&&&&&&[]*&**[]&[]**[]**[][]*[], d*&[][][]&[][][]&&[][], e[]*[]*&&*;
+a b[][][][][]&&&&*[]*[]***&&*[][][]&[][][]*[]*[]&[]&[][]&[]&*[]****&[]**[]*[][]*[]&&&*[]&*&[]&[]&[]*[]*[]*&&&*[]*&&*&[];
+a b*&&[]*[][]&[][][]&[]*[]*[]*&&&*[]*&&*&*[]&[]*&&[]&[][]*[]&***[]&[]*[][]*[]&[]**[]*&[]&&&&*[]*&[]****&&[]&[]*[]&*[]*;
+a d[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][];
+a e[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][];
+a f********************************************************************************************************************;
+q&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& a;
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz i;
+i zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+uadsfoisnhdfsdiufdsf**[]&&&*[]*&*[]*&*[]*[]&*[]**[][]*&[] a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u;
