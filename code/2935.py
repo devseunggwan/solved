@@ -1,0 +1,1 @@
+print(eval("{} {} {}".format(input(), input(), input())))
