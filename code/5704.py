@@ -6,3 +6,7 @@ while True:
     for i in N.strip().split(): T += i
     if(len(list(Counter(T).values())) != 26): print("N")
     else: print("Y")
+
+
+
+
