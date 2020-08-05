@@ -1,3 +1,1 @@
-N = int(input())
-if((N//4)%2 == 1): print(N%4+1)
-else: print(N%4)
+print([2, 1, 2, 3, 4, 5, 4, 3][int(input())%8])
