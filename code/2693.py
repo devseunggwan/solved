@@ -1,0 +1,1 @@
+for i in range(int(input())): print(sorted(list(map(int, input().strip().split())), reverse=True)[2])
