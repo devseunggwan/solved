@@ -3,3 +3,4 @@
 
 * Language: python3
 * beakjoon ID: https://www.acmicpc.net/user/gtr7852
+* solved.ac: https://solved.ac/profile/gtr7852
