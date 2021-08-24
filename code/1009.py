@@ -22,4 +22,4 @@ for loop in range(int(input())):
     for c in W: exps = exps * mods[c]
     
     if(exps%10 == 0): print(10)
-    else: print(exps%10)
+    else: print(exps%10) 
