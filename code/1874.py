@@ -1,13 +1,27 @@
 import sys
-from collections import deque
 
 N = int(sys.stdin.readline())
-M = deque([int(sys.stdin.readline()) in range(N)])
-L = 1
-while M:
-    if(M[0] - L == 0):
-        pass
-    elif(M[0] - L > 0):
-        pass
-    elif(M[0] - L < 0):
-        pass
+stack = list()
+answer = list()
+flag = 0
+roof = 1
+
+for _ in range(N):
+    number = int(sys.stdin.readline())
+    while roof <= number:
+        stack.append(roof)
+        answer.append("+")
+        roof += 1
+
+    if stack[-1] == number:
+        stack.pop()
+        answer.append("-")
+
+    else:
+        print("NO")
+        flag = 1
+        break
+
+if not flag:
+    for i in answer:
+        print(i)

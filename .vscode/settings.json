@@ -1,7 +1,7 @@
 {
     "python.pythonPath": "/home/mayman/.pyenv/versions/miniconda3-4.7.12/bin/python",
-    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.linting.flake8Enabled": false,
-    "python.linting.pycodestyleEnabled": false
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black"
 }
