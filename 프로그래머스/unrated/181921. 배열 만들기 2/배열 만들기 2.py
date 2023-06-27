@@ -1,5 +1,3 @@
-from itertools import permutations
-
 def solution(l, r):
     arr = ["5"]
     cur = 0
