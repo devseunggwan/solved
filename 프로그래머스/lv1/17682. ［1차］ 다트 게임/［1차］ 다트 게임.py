@@ -5,9 +5,9 @@ def solution(DR):
     
     p = re.findall(r"([0-9]+)([SDT])([\#\*]?)", DR)
     sdt = {
-        "S": lambda x: x,
-        "D": lambda x: x**2,
-        "T": lambda x: x**3,
+        "S": 1,
+        "D": 2,
+        "T": 3,
     }
     
     star = [1, 1, 1]
@@ -16,7 +16,7 @@ def solution(DR):
         star[idx-1] *= 2 if p[idx][2] == "*" else 1
         acha = -1 if p[idx][2] == "#" else 1
         try:
-            point = sdt[p[idx][1]](int(p[idx][0])) * star[idx] * acha    
+            point = (int(p[idx][0]) ** sdt[p[idx][1]]) * star[idx] * acha    
         except:
             pass
         answer += point
