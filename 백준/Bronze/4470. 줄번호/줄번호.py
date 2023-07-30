@@ -1,0 +1,1 @@
+[print(f"{i}. {input()}") for i in range(1, int(input())+1)]
