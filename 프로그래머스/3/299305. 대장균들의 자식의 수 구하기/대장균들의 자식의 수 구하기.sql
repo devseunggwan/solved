@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+
+WITH A AS (
+    SELECT
+        PARENT_ID AS PID,
+        COUNT(ID) CHILD_COUNT
+    FROM 
+        ECOLI_DATA
+    GROUP BY
+        PARENT_ID
+    ORDER BY
+        PARENT_ID
+)
+SELECT
+    ED.ID AS ID,
+    IFNULL(A.CHILD_COUNT, 0) AS CHILD_COUNT
+FROM
+    ECOLI_DATA ED
+LEFT JOIN A
+    ON ED.ID = A.PID
+
