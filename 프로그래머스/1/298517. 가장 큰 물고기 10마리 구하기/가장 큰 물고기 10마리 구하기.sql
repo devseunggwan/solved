@@ -7,4 +7,4 @@ FROM
 ORDER BY
     LENGTH DESC, ID
 LIMIT 
-    10
+    10;
