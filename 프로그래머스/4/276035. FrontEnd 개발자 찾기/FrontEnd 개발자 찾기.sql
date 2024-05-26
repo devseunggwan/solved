@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+
+with FRONT_DEV AS (
+    SELECT
+        SUM(CODE) AS FRONT_CODE
+    FROM
+        SKILLCODES
+    WHERE
+        CATEGORY = 'Front End'
+)
+SELECT
+    ID,
+    EMAIL,
+    FIRST_NAME,
+    LAST_NAME
+FROM
+    DEVELOPERS, FRONT_DEV
+WHERE
+    SKILL_CODE & FRONT_CODE
+ORDER BY
+    1;
