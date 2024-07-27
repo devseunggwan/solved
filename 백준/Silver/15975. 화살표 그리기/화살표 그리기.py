@@ -12,23 +12,28 @@ def read():
     return N, P, colors
 
 
-if __name__ == "__main__":
-    N, P, colors = read()
-    answer = 0
+def get_length(P, colors):
+    length = 0
+    
+    dict_colors = {color: [] for color in colors}
 
+    for item in P:
+        dict_colors[item[1]].append(item[0])
+    
     for color in colors:
-        lines = [x[0] for x in P if x[1] == color]
-        lines = sorted(lines)
+        lines = dict_colors[color]
 
         if len(lines) == 1:
             continue
 
-        for i in range(len(lines)):
-            if i == 0:
-                answer += lines[i+1] - lines[i]
-            elif i == len(lines) - 1:
-                answer += abs(lines[i] - lines[i-1])
-            else:
-                answer += min(lines[i+1] - lines[i], abs(lines[i] - lines[i-1]))
+        lines.sort()
+        length += (lines[1] - lines[0]) + abs(lines[-1] - lines[-2]) + sum([min(lines[i+1] - lines[i], abs(lines[i] - lines[i-1])) for i in range(1, len(lines)-1)])
+
+    return length
+
+
+if __name__ == "__main__":
+    N, P, colors = read()
+    answer = get_length(P, colors)
 
     print(answer)
