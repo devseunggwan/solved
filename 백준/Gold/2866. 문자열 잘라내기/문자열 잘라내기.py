@@ -6,7 +6,7 @@ def read():
 
     R, C = map(int, r().strip().split())
     M = [r().strip() for _ in range(R)]
-    M = ["".join([M[j][i] for j in range(R)]) for i in range(C)]
+    M = ["".join(x) for x in zip(*M)]
 
     return R, C, M
     
